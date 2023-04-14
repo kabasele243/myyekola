@@ -15,7 +15,9 @@ jobs:
     steps:
       - checkout
       - run: yarn global add vercel
-      - run: vercel --token $VERCEL_TOKEN_DEV --prod=false --scope=$SCOPE --target=dev
+      - run: vercel pull --yes --environment=dev --token=$VERCEL_TOKEN_DEV
+      - run: vercel build --token=$VERCEL_TOKEN_DEV
+      - run: vercel deploy --prebuilt  --token=$VERCEL_TOKEN_DEV
   deploy-staging:
     working_directory: ~/repo
     docker:
@@ -23,7 +25,9 @@ jobs:
     steps:
       - checkout
       - run: yarn global add vercel
-      - run: vercel --token $VERCEL_TOKEN_STAGING --prod=false --scope=$SCOPE --target=staging
+      - run: vercel pull --yes --environment=stage --token=$VERCEL_TOKEN_DEV
+      - run: vercel build --token=$VERCEL_TOKEN_DEV
+      - run: vercel deploy --prebuilt  --token=$VERCEL_TOKEN_DEV
   deploy-production:
     working_directory: ~/repo
     docker:
@@ -31,7 +35,9 @@ jobs:
     steps:
       - checkout
       - run: yarn global add vercel
-      - run: vercel --token $VERCEL_TOKEN_PRODUCTION --prod=true --scope=$SCOPE --target=production
+      - run: vercel pull --yes --environment=production --token=$VERCEL_TOKEN_DEV
+      - run: vercel build --token=$VERCEL_TOKEN_DEV
+      - run: vercel deploy --prebuilt  --token=$VERCEL_TOKEN_DEV
 
 workflows:
   build-and-deploy:
