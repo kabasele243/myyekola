@@ -15,7 +15,7 @@ jobs:
     steps:
       - checkout
       - run: yarn global add vercel
-      - run: vercel --token $VERCEL_TOKEN_DEV --prod=false --scope=<vercel_scope> --target=dev
+      - run: vercel --token $VERCEL_TOKEN_DEV --prod=false --scope=$SCOPE --target=dev
   deploy-staging:
     working_directory: ~/repo
     docker:
@@ -23,7 +23,7 @@ jobs:
     steps:
       - checkout
       - run: yarn global add vercel
-      - run: vercel --token $VERCEL_TOKEN_STAGING --prod=false --scope=<vercel_scope> --target=staging
+      - run: vercel --token $VERCEL_TOKEN_STAGING --prod=false --scope=$SCOPE --target=staging
   deploy-production:
     working_directory: ~/repo
     docker:
@@ -31,7 +31,7 @@ jobs:
     steps:
       - checkout
       - run: yarn global add vercel
-      - run: vercel --token $VERCEL_TOKEN_PRODUCTION --prod=true --scope=<vercel_scope> --target=production
+      - run: vercel --token $VERCEL_TOKEN_PRODUCTION --prod=true --scope=$SCOPE --target=production
 
 workflows:
   build-and-deploy:
