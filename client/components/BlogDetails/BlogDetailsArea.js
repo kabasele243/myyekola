@@ -5,6 +5,7 @@ import BlogRightSide from '../Blog/BlogRightSide';
 import FormArea from './FormArea';
 
 const BlogDetailsArea = () => {
+   
    // all blogs
    const blogs = useSelector(state => state.blogs.allBlogs);
    // blog
