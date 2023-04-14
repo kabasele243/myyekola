@@ -1,0 +1,64 @@
+version: 2.1
+jobs:
+  build:
+    working_directory: ~/repo/client
+    docker:
+      - image: circleci/node:14
+    steps:
+      - checkout
+      - run: npm install
+      - run: npm lint
+  deploy-dev:
+    working_directory: ~/repo/client
+    docker:
+      - image: circleci/node:14
+    steps:
+      - checkout
+      - run: npm install -g vercel
+      - run: vercel --token $VERCEL_TOKEN_DEV --prod=false --scope=<vercel_scope> --target=dev
+  deploy-staging:
+    working_directory: ~/repo
+    docker:
+      - image: circleci/node:14
+    steps:
+      - checkout
+      - run: npm install -g vercel
+      - run: vercel --token $VERCEL_TOKEN_STAGING --prod=false --scope=<vercel_scope> --target=staging
+  deploy-production:
+    working_directory: ~/repo
+    docker:
+      - image: circleci/node:14
+    steps:
+      - checkout
+      - run: npm install -g vercel
+      - run: vercel --token $VERCEL_TOKEN_PRODUCTION --prod=true --scope=<vercel_scope> --target=production
+
+workflows:
+  build-and-deploy:
+    jobs:
+      - build:
+          filters:
+            branches:
+              only:
+                - main
+      - deploy-dev:
+          requires:
+            - build
+          filters:
+            branches:
+              only:
+                - dev
+      - deploy-staging:
+          requires:
+            - build
+          filters:
+            branches:
+              only:
+                - staging
+      - deploy-production:
+          requires:
+            - build
+          filters:
+            branches:
+              only:
+                - main
