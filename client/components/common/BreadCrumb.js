@@ -12,7 +12,7 @@ const BreadCrumb = ({ title, subtitle }) => {
                         <div className="breadcrumb__list">
                            <span>
                               <Link href="/">
-                                 <a >Home</a>
+                                 <a > Home </a>
                               </Link>
                            </span>
                            <span className="dvdr"><i className="fa-regular fa-angle-right"></i></span>
