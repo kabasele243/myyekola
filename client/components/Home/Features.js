@@ -9,7 +9,8 @@ const Features = () => {
             <path d="M7.3176 24.275L7.2966 34.1259C7.2966 36.7934 9.35499 39.6499 11.8755 40.4901L18.5757 42.7165C19.7309 43.0945 21.6423 43.0945 22.8185 42.7165L29.5188 40.4901C32.0392 39.6499 34.0976 36.7934 34.0976 34.1259V24.38" stroke="#3D6CE7" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             <path d="M40.4408 28.3077V15.7054" stroke="#3D6CE7" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
          </svg>,
-         title: 'Graduation',
+         title: 'Courses',
+         description: 'Learn the best courses from top universities and organizations.'
       },
       {
          id: 2,
@@ -24,7 +25,8 @@ const Features = () => {
             <path d="M0.966797 39.1608H43.1335" stroke="#031220" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
             <path d="M22.0501 13.2858C23.6379 13.2858 24.9251 11.9986 24.9251 10.4108C24.9251 8.82295 23.6379 7.53577 22.0501 7.53577C20.4623 7.53577 19.1751 8.82295 19.1751 10.4108C19.1751 11.9986 20.4623 13.2858 22.0501 13.2858Z" stroke="#031220" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
          </svg>,
-         title: 'University Life',
+         title: 'Assessment',
+         description: 'Take assessments to improve your skills.'
       },
       {
          id: 3,
@@ -34,7 +36,8 @@ const Features = () => {
             <path d="M12.0209 12.1696H7.70837" stroke="#3D6CE7" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             <path d="M13.4584 17.9196H7.70837" stroke="#3D6CE7" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
          </svg>,
-         title: 'Education Services',
+         title: 'Collaboration',
+         description: 'Collaborate with your peers.'
       },
    ]
    return (
@@ -56,7 +59,7 @@ const Features = () => {
                                           <a>{feature.title}</a>
                                        </Link>
                                     </h3>
-                                    <p>Euucal University was established it is recognized.</p>
+                                    <p>{feature.description}</p>
 
                                     <Link href="/about">
                                        <a className="link-btn">Learn More <i className="fa-regular fa-arrow-right">
